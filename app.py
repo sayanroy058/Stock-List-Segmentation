@@ -1,13 +1,18 @@
 import streamlit as st
 import mysql.connector
 import pandas as pd
+from dotenv import load_dotenv
+import os
 
-# Database connection details
-host = 'mysql-272ae44e-aishwaryahalder01-ca5c.i.aivencloud.com'
-port = 21640
-user = 'avnadmin'
-password = 'AVNS_0U7vYiJ9zKFyfsmDvMg'
-database = 'Stocks'
+# Load environment variables from .env file
+load_dotenv()
+
+# Database connection details from environment variables
+host = os.getenv('DB_HOST')
+port = int(os.getenv('DB_PORT'))
+user = os.getenv('DB_USER')
+password = os.getenv('DB_PASSWORD')
+database = os.getenv('DB_NAME')
 
 # Function to connect to the database
 def get_db_connection():
